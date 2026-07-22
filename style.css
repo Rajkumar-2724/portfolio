@@ -1,0 +1,384 @@
+/* ===========================
+   Dashboard Portfolio CSS
+   =========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef2f7;
+    color:#333;
+}
+
+/* Sidebar */
+
+.bg-dark{
+    background:linear-gradient(180deg,#0f172a,#1e293b)!important;
+}
+
+.nav-link{
+    padding:12px 15px;
+    margin-bottom:8px;
+    border-radius:10px;
+    transition:.3s;
+    font-size:16px;
+}
+
+.nav-link:hover{
+    background:#2563eb;
+    color:#fff!important;
+    transform:translateX(5px);
+}
+
+.nav-link i{
+    margin-right:10px;
+}
+
+/* Profile */
+
+.rounded-circle{
+    border:5px solid white;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+/* Main Content */
+
+.container{
+    animation:fadeIn 1s;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* Dashboard Cards */
+
+.card{
+
+border:none;
+border-radius:18px;
+overflow:hidden;
+transition:.4s;
+margin-bottom:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.card-body{
+
+padding:25px;
+
+}
+
+.card h2{
+
+font-size:38px;
+font-weight:bold;
+margin-top:10px;
+
+}
+
+/* Different Card Colors */
+
+.row .col-md-3:nth-child(1) .card{
+
+background:linear-gradient(135deg,#3b82f6,#60a5fa);
+color:white;
+
+}
+
+.row .col-md-3:nth-child(2) .card{
+
+background:linear-gradient(135deg,#10b981,#34d399);
+color:white;
+
+}
+
+.row .col-md-3:nth-child(3) .card{
+
+background:linear-gradient(135deg,#f59e0b,#fbbf24);
+color:white;
+
+}
+
+.row .col-md-3:nth-child(4) .card{
+
+background:linear-gradient(135deg,#ef4444,#fb7185);
+color:white;
+
+}
+
+/* Headings */
+
+h1{
+
+font-weight:bold;
+margin-bottom:25px;
+
+}
+
+h2{
+
+margin-bottom:20px;
+font-weight:bold;
+color:#1e293b;
+
+}
+
+/* About */
+
+#about .card{
+
+background:white;
+
+}
+
+/* Skills */
+
+.progress{
+
+height:25px;
+
+border-radius:20px;
+
+background:#ddd;
+
+margin-top:8px;
+
+margin-bottom:20px;
+
+}
+
+.progress-bar{
+
+font-size:14px;
+
+font-weight:bold;
+
+line-height:25px;
+
+}
+
+/* Project Images */
+
+.card-img-top{
+
+height:200px;
+
+object-fit:cover;
+
+transition:.4s;
+
+}
+
+.card:hover .card-img-top{
+
+transform:scale(1.05);
+
+}
+
+/* Education */
+
+#education ul{
+
+padding-left:20px;
+
+}
+
+#education li{
+
+padding:10px 0;
+
+font-size:18px;
+
+}
+
+/* Contact */
+
+form input,
+form textarea{
+
+border-radius:10px!important;
+
+padding:12px!important;
+
+border:1px solid #bbb!important;
+
+box-shadow:none!important;
+
+margin-bottom:15px;
+
+}
+
+form input:focus,
+form textarea:focus{
+
+border-color:#2563eb!important;
+
+box-shadow:0 0 8px rgba(37,99,235,.3)!important;
+
+}
+
+.btn-primary{
+
+background:#2563eb!important;
+
+border:none!important;
+
+padding:12px 25px!important;
+
+border-radius:10px!important;
+
+transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+background:#1d4ed8!important;
+
+transform:scale(1.05);
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#ddd;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#2563eb;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#1d4ed8;
+
+}
+
+/* Footer */
+
+footer{
+
+padding:20px;
+
+text-align:center;
+
+color:#777;
+
+}
+
+/* Responsive */
+
+@media(max-width:991px){
+
+.bg-dark{
+
+min-height:auto!important;
+
+}
+
+.nav{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.nav-link{
+
+margin:5px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.card h2{
+
+font-size:28px;
+
+}
+
+h1{
+
+font-size:32px;
+
+}
+
+h2{
+
+font-size:24px;
+
+}
+
+.card-img-top{
+
+height:180px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+body{
+
+font-size:14px;
+
+}
+
+.card-body{
+
+padding:18px;
+
+}
+
+.btn-primary{
+
+width:100%;
+
+}
+
+}
