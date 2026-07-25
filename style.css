@@ -24,25 +24,48 @@ color:#222;
 /* ==========================
 Navbar
 ========================== */
+transition:.3s;
+
+}
 
 .navbar{
+
 background:#0d1b2a;
+
 box-shadow:0 4px 15px rgba(0,0,0,.2);
+
 }
+
+
 
 .navbar-brand{
+
 font-size:28px;
+
 font-weight:700;
+
 }
+
+
 
 .nav-link{
+
 color:#fff !important;
+
 margin-left:15px;
-transition:.3s;
-}
 
 .nav-link:hover{
+
 color:#00c6ff !important;
+
+}
+
+.navbar-toggler{
+    border:2px solid white;
+}
+
+.navbar-toggler:focus{
+    box-shadow:none;
 }
 
 /* ==========================
