@@ -40,16 +40,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     anchor.addEventListener("click", function (e) {
 
-        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
 
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
-        });
+        if (target) {
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+            const navbar = document.getElementById("navbarNav");
+
+            if (navbar.classList.contains("show")) {
+                bootstrap.Collapse.getOrCreateInstance(navbar).hide();
+            }
+
+        }
 
     });
 
 });
-
 // ===============================
 // Scroll Animation
 // ===============================
