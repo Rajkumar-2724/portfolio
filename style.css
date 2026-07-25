@@ -1,332 +1,318 @@
-/* ===========================
-   Dashboard Portfolio CSS
-   =========================== */
+/* ==========================
+   Google Font
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
+
+/* ==========================
+Body
+========================== */
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#eef2f7;
-    color:#333;
+background:#f4f7fc;
+color:#222;
 }
 
-/* Sidebar */
+/* ==========================
+Navbar
+========================== */
 
-.bg-dark{
-    background:linear-gradient(180deg,#0f172a,#1e293b)!important;
+.navbar{
+background:#0d1b2a;
+box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+.navbar-brand{
+font-size:28px;
+font-weight:700;
 }
 
 .nav-link{
-    padding:12px 15px;
-    margin-bottom:8px;
-    border-radius:10px;
-    transition:.3s;
-    font-size:16px;
+color:#fff !important;
+margin-left:15px;
+transition:.3s;
 }
 
 .nav-link:hover{
-    background:#2563eb;
-    color:#fff!important;
-    transform:translateX(5px);
+color:#00c6ff !important;
 }
 
-.nav-link i{
-    margin-right:10px;
+/* ==========================
+Hero
+========================== */
+
+#home{
+padding-top:100px;
+min-height:100vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
 }
 
-/* Profile */
-
-.rounded-circle{
-    border:5px solid white;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-/* Main Content */
-
-.container{
-    animation:fadeIn 1s;
-}
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(20px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-/* Dashboard Cards */
-
-.card{
-
-border:none;
-border-radius:18px;
-overflow:hidden;
+.profile-img{
+width:300px;
+height:300px;
+border-radius:50%;
+object-fit:cover;
+object-position:center top;
+border:8px solid white;
+box-shadow:0 15px 40px rgba(0,0,0,.4);
 transition:.4s;
-margin-bottom:20px;
+}
 
-box-shadow:0 8px 20px rgba(0,0,0,.08);
+.profile-img:hover{
+transform:scale(1.05);
+}
+
+.display-3{
+font-weight:700;
+}
+
+.lead{
+font-size:18px;
+}
+
+/* ==========================
+Buttons
+========================== */
+
+.btn-primary{
+padding:12px 28px;
+border-radius:30px;
+}
+
+.btn-outline-primary{
+padding:12px 28px;
+border-radius:30px;
+}
+
+/* ==========================
+Social Icons
+========================== */
+
+.social-icons a{
+
+display:inline-flex;
+justify-content:center;
+align-items:center;
+
+width:50px;
+height:50px;
+
+background:white;
+color:#0d6efd;
+
+border-radius:50%;
+
+margin-right:12px;
+
+font-size:22px;
+
+text-decoration:none;
+
+transition:.4s;
 
 }
 
-.card:hover{
+.social-icons a:hover{
 
-transform:translateY(-8px);
-
-box-shadow:0 15px 35px rgba(0,0,0,.18);
-
-}
-
-.card-body{
-
-padding:25px;
-
-}
-
-.card h2{
-
-font-size:38px;
-font-weight:bold;
-margin-top:10px;
-
-}
-
-/* Different Card Colors */
-
-.row .col-md-3:nth-child(1) .card{
-
-background:linear-gradient(135deg,#3b82f6,#60a5fa);
+background:#0d6efd;
 color:white;
+transform:translateY(-6px);
 
 }
 
-.row .col-md-3:nth-child(2) .card{
+/* ==========================
+Sections
+========================== */
 
-background:linear-gradient(135deg,#10b981,#34d399);
-color:white;
+section{
 
-}
-
-.row .col-md-3:nth-child(3) .card{
-
-background:linear-gradient(135deg,#f59e0b,#fbbf24);
-color:white;
+padding:90px 0;
 
 }
 
-.row .col-md-3:nth-child(4) .card{
+section h2{
 
-background:linear-gradient(135deg,#ef4444,#fb7185);
-color:white;
-
-}
-
-/* Headings */
-
-h1{
-
-font-weight:bold;
-margin-bottom:25px;
+font-size:40px;
+font-weight:700;
+margin-bottom:15px;
 
 }
 
-h2{
+section p{
 
-margin-bottom:20px;
-font-weight:bold;
-color:#1e293b;
+font-size:17px;
 
 }
 
-/* About */
+/* ==========================
+About
+========================== */
 
-#about .card{
+.about-box{
 
 background:white;
 
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
 }
 
-/* Skills */
+.about-box h6{
+
+font-weight:700;
+
+color:#0d6efd;
+
+}
+
+/* ==========================
+Skills
+========================== */
 
 .progress{
 
-height:25px;
+height:28px;
 
 border-radius:20px;
 
-background:#ddd;
+overflow:hidden;
 
-margin-top:8px;
-
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
 
 .progress-bar{
 
-font-size:14px;
+font-weight:600;
 
-font-weight:bold;
-
-line-height:25px;
+font-size:15px;
 
 }
 
-/* Project Images */
+/* ==========================
+Cards
+========================== */
 
-.card-img-top{
+.card{
 
-height:200px;
+border:none;
 
-object-fit:cover;
+border-radius:20px;
+
+overflow:hidden;
 
 transition:.4s;
 
 }
 
-.card:hover .card-img-top{
+.card:hover{
 
-transform:scale(1.05);
+transform:translateY(-10px);
 
-}
-
-/* Education */
-
-#education ul{
-
-padding-left:20px;
+box-shadow:0 20px 35px rgba(0,0,0,.15);
 
 }
 
-#education li{
+.card img{
 
-padding:10px 0;
+height:220px;
 
-font-size:18px;
-
-}
-
-/* Contact */
-
-form input,
-form textarea{
-
-border-radius:10px!important;
-
-padding:12px!important;
-
-border:1px solid #bbb!important;
-
-box-shadow:none!important;
-
-margin-bottom:15px;
+object-fit:cover;
 
 }
 
-form input:focus,
-form textarea:focus{
+/* ==========================
+Timeline
+========================== */
 
-border-color:#2563eb!important;
+.timeline{
 
-box-shadow:0 0 8px rgba(37,99,235,.3)!important;
+border-left:5px solid #0d6efd;
 
-}
-
-.btn-primary{
-
-background:#2563eb!important;
-
-border:none!important;
-
-padding:12px 25px!important;
-
-border-radius:10px!important;
-
-transition:.3s;
+padding-left:30px;
 
 }
 
-.btn-primary:hover{
+.timeline-item{
 
-background:#1d4ed8!important;
-
-transform:scale(1.05);
-
-}
-
-/* Scrollbar */
-
-::-webkit-scrollbar{
-
-width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-background:#ddd;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:#2563eb;
-
-border-radius:20px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-background:#1d4ed8;
-
-}
-
-/* Footer */
-
-footer{
+background:white;
 
 padding:20px;
 
-text-align:center;
+margin-bottom:25px;
 
-color:#777;
+border-radius:15px;
 
-}
-
-/* Responsive */
-
-@media(max-width:991px){
-
-.bg-dark{
-
-min-height:auto!important;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 
 }
 
-.nav{
+/* ==========================
+Contact
+========================== */
 
-display:flex;
+form{
 
-flex-wrap:wrap;
+background:white;
 
-justify-content:center;
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 
 }
 
-.nav-link{
+.form-control{
 
-margin:5px;
+padding:14px;
+
+border-radius:12px;
+
+}
+
+/* ==========================
+Footer
+========================== */
+
+footer{
+
+background:#0d1b2a;
+
+color:white;
+
+}
+
+/* ==========================
+Responsive
+========================== */
+
+@media(max-width:992px){
+
+.profile-img{
+
+width:220px;
+height:220px;
+
+margin-bottom:40px;
+
+}
+
+.display-3{
+
+font-size:45px;
 
 }
 
@@ -334,49 +320,21 @@ margin:5px;
 
 @media(max-width:768px){
 
-.card h2{
+.display-3{
 
-font-size:28px;
+font-size:36px;
 
 }
 
-h1{
+section h2{
 
 font-size:32px;
 
 }
 
-h2{
+.social-icons{
 
-font-size:24px;
-
-}
-
-.card-img-top{
-
-height:180px;
-
-}
-
-}
-
-@media(max-width:576px){
-
-body{
-
-font-size:14px;
-
-}
-
-.card-body{
-
-padding:18px;
-
-}
-
-.btn-primary{
-
-width:100%;
+text-align:center;
 
 }
 
