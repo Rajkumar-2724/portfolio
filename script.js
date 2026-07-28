@@ -1,152 +1,539 @@
-// ===============================
-// Navbar Active Link
-// ===============================
+/* ===================================
+   PORTFOLIO SCRIPT
+   Raj Kumar R
+=================================== */
 
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
 
-window.addEventListener("scroll", () => {
+/* ===================================
+   Smooth Scroll Navigation
+=================================== */
 
-    let current = "";
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-    sections.forEach(section => {
+    link.addEventListener("click", function(e){
 
-        const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.clientHeight;
+        e.preventDefault();
 
-        if (pageYOffset >= sectionTop) {
-            current = section.getAttribute("id");
-        }
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
 
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-
-    });
-
-});
-
-// ===============================
-// Smooth Scroll
-// ===============================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-    anchor.addEventListener("click", function (e) {
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        if (target) {
-
-            e.preventDefault();
+        if(target){
 
             target.scrollIntoView({
-                behavior: "smooth"
+
+                behavior:"smooth"
+
             });
 
-            const navbar = document.getElementById("navbarNav");
+        }
 
-            if (navbar.classList.contains("show")) {
-                bootstrap.Collapse.getOrCreateInstance(navbar).hide();
-            }
+    });
+
+});
+
+
+
+/* ===================================
+   Mobile Navbar Auto Close
+=================================== */
+
+const navLinks = document.querySelectorAll(".nav-link");
+
+const navbarCollapse =
+document.querySelector(".navbar-collapse");
+
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click",()=>{
+
+        if(navbarCollapse.classList.contains("show")){
+
+            new bootstrap.Collapse(navbarCollapse)
+            .hide();
 
         }
 
     });
 
 });
-// ===============================
-// Scroll Animation
-// ===============================
 
-const cards = document.querySelectorAll(".card, .timeline-item, .about-box");
 
-const observer = new IntersectionObserver((entries) => {
 
-    entries.forEach(entry => {
+/* ===================================
+   Navbar Scroll Effect
+=================================== */
 
-        if (entry.isIntersecting) {
 
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+window.addEventListener("scroll",()=>{
 
-        }
 
-    });
+const navbar =
+document.querySelector(".navbar");
 
-}, {
-    threshold: 0.2
-});
 
-cards.forEach(card => {
+if(window.scrollY > 50){
 
-    card.style.opacity = "0";
-    card.style.transform = "translateY(40px)";
-    card.style.transition = "all 0.6s ease";
+navbar.style.background =
+"rgba(13,110,253,0.98)";
 
-    observer.observe(card);
+navbar.style.boxShadow =
+"0 10px 25px rgba(0,0,0,.25)";
 
-});
+}
 
-// ===============================
-// Back To Top Button
-// ===============================
+else{
 
-const btn = document.createElement("button");
 
-btn.innerHTML = "↑";
-btn.id = "topBtn";
+navbar.style.background =
+"rgba(13,110,253,.95)";
 
-document.body.appendChild(btn);
 
-btn.style.position = "fixed";
-btn.style.right = "20px";
-btn.style.bottom = "20px";
-btn.style.width = "50px";
-btn.style.height = "50px";
-btn.style.border = "none";
-btn.style.borderRadius = "50%";
-btn.style.background = "#0d6efd";
-btn.style.color = "#fff";
-btn.style.fontSize = "22px";
-btn.style.cursor = "pointer";
-btn.style.display = "none";
-btn.style.boxShadow = "0 5px 15px rgba(0,0,0,.3)";
+navbar.style.boxShadow =
+"0 8px 20px rgba(0,0,0,.15)";
 
-window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 300) {
-        btn.style.display = "block";
-    } else {
-        btn.style.display = "none";
-    }
+}
+
+
 
 });
 
-btn.addEventListener("click", () => {
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+
+/* ===================================
+   Active Menu Highlight
+=================================== */
+
+
+const sections =
+document.querySelectorAll("section");
+
+
+window.addEventListener("scroll",()=>{
+
+
+let current="";
+
+
+sections.forEach(section=>{
+
+
+const sectionTop =
+section.offsetTop - 120;
+
+
+const sectionHeight =
+section.clientHeight;
+
+
+
+if(
+scrollY >= sectionTop &&
+scrollY < sectionTop + sectionHeight
+){
+
+current =
+section.getAttribute("id");
+
+}
+
 
 });
 
-// ===============================
-// Footer Year
-// ===============================
 
-const footer = document.querySelector("footer p");
 
-if (footer) {
+navLinks.forEach(link=>{
 
-    footer.innerHTML =
-        `© ${new Date().getFullYear()} Raj Kumar. All Rights Reserved.`;
+
+link.classList.remove("active");
+
+
+if(
+link.getAttribute("href")
+==
+"#"+current
+){
+
+link.classList.add("active");
+
+}
+
+
+});
+
+
+});
+
+
+
+
+/* ===================================
+   Typing Animation
+=================================== */
+
+
+const textArray=[
+
+"BE Computer Science Engineering Student",
+
+"Web Developer",
+
+"Java Programmer",
+
+"Python Developer",
+
+"Future Full Stack Developer"
+
+];
+
+
+let textIndex=0;
+
+let charIndex=0;
+
+
+const typingElement =
+document.querySelector("#home h3");
+
+
+
+function typing(){
+
+
+if(charIndex < textArray[textIndex].length){
+
+
+typingElement.innerHTML +=
+textArray[textIndex].charAt(charIndex);
+
+
+charIndex++;
+
+
+setTimeout(typing,100);
+
+
+}
+
+
+else{
+
+
+setTimeout(erase,1500);
+
+
+}
+
+
+}
+
+
+
+function erase(){
+
+
+if(charIndex > 0){
+
+
+typingElement.innerHTML =
+textArray[textIndex].substring(
+0,charIndex-1
+);
+
+
+charIndex--;
+
+
+setTimeout(erase,50);
+
+
+}
+
+else{
+
+
+textIndex++;
+
+
+if(textIndex >= textArray.length){
+
+textIndex=0;
+
+}
+
+
+setTimeout(typing,500);
+
+
+}
+
+
+}
+
+
+
+window.addEventListener(
+"load",
+()=>{
+
+typing();
+
+}
+
+);
+
+
+
+
+
+/* ===================================
+   Scroll Reveal Animation
+=================================== */
+
+
+const revealElements =
+document.querySelectorAll(
+"section,.card,.about-box,.timeline-item"
+);
+
+
+
+function reveal(){
+
+
+revealElements.forEach(element=>{
+
+
+let position =
+element.getBoundingClientRect()
+.top;
+
+
+let screenHeight =
+window.innerHeight;
+
+
+
+if(position < screenHeight - 100){
+
+
+element.style.opacity="1";
+
+element.style.transform=
+"translateY(0)";
+
+
+}
+
+
+});
+
+
+}
+
+
+
+revealElements.forEach(element=>{
+
+
+element.style.opacity="0";
+
+element.style.transform=
+"translateY(50px)";
+
+element.style.transition=
+"all .8s ease";
+
+
+});
+
+
+window.addEventListener(
+"scroll",
+reveal
+);
+
+
+window.addEventListener(
+"load",
+reveal
+);
+
+
+
+
+
+/* ===================================
+   Profile Image Click Effect
+=================================== */
+
+
+const profile =
+document.querySelector(".profile-img");
+
+
+if(profile){
+
+
+profile.addEventListener(
+"click",
+()=>{
+
+
+profile.style.transform=
+"scale(1.15) rotate(5deg)";
+
+
+setTimeout(()=>{
+
+
+profile.style.transform=
+"";
+
+
+},500);
+
+
+});
+
+
+}
+
+
+
+
+
+/* ===================================
+   Project Card Tilt Effect
+=================================== */
+
+
+const cards =
+document.querySelectorAll(".card");
+
+
+cards.forEach(card=>{
+
+
+card.addEventListener(
+"mousemove",
+(e)=>{
+
+
+const rect =
+card.getBoundingClientRect();
+
+
+const x =
+e.clientX - rect.left;
+
+
+const y =
+e.clientY - rect.top;
+
+
+
+const rotateX =
+(y-rect.height/2)/15;
+
+
+const rotateY =
+(rect.width/2-x)/15;
+
+
+
+card.style.transform =
+`
+perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+scale(1.03)
+`;
+
+
+
+});
+
+
+
+card.addEventListener(
+"mouseleave",
+()=>{
+
+
+card.style.transform="";
+
+
+});
+
+
+});
+
+
+
+
+
+
+/* ===================================
+   Current Year Footer
+=================================== */
+
+
+const year =
+new Date().getFullYear();
+
+
+const footerText =
+document.querySelector("footer p");
+
+
+if(footerText){
+
+
+footerText.innerHTML =
+`© ${year} Raj Kumar R. All Rights Reserved.`;
+
+
+}
+
+
+
+
+
+
+/* ===================================
+   Form Submit Alert
+=================================== */
+
+
+const form =
+document.querySelector("form");
+
+
+if(form){
+
+
+form.addEventListener(
+"submit",
+function(e){
+
+
+e.preventDefault();
+
+
+alert(
+"Thank you for contacting me! I will reply soon."
+);
+
+
+form.reset();
+
+
+}
+
+);
+
 
 }
