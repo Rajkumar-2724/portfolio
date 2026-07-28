@@ -1,614 +1,539 @@
-<!DOCTYPE html>
-<html lang="en">
+/* ===================================
+   PORTFOLIO SCRIPT
+   Raj Kumar R
+=================================== */
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Raj Kumar | Personal Portfolio</title>
+/* ===================================
+   Smooth Scroll Navigation
+=================================== */
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    link.addEventListener("click", function(e){
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="style.css">
+        e.preventDefault();
 
-</head>
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
 
-<body>
+        if(target){
 
-<!-- ================= NAVBAR ================= -->
+            target.scrollIntoView({
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                behavior:"smooth"
 
-<div class="container">
+            });
 
-<a class="navbar-brand fw-bold" href="#">
-Raj Kumar
-</a>
+        }
 
-<button class="navbar-toggler"
-type="button"
-data-bs-toggle="collapse"
-data-bs-target="#menu">
+    });
 
-<span class="navbar-toggler-icon"></span>
+});
 
-</button>
 
-<div class="collapse navbar-collapse"
-id="menu">
 
-<ul class="navbar-nav ms-auto">
+/* ===================================
+   Mobile Navbar Auto Close
+=================================== */
 
-<li class="nav-item">
-<a class="nav-link" href="#home">Home</a>
-</li>
+const navLinks = document.querySelectorAll(".nav-link");
 
-<li class="nav-item">
-<a class="nav-link" href="#about">About</a>
-</li>
+const navbarCollapse =
+document.querySelector(".navbar-collapse");
 
-<li class="nav-item">
-<a class="nav-link" href="#skills">Skills</a>
-</li>
 
-<li class="nav-item">
-<a class="nav-link" href="#projects">Projects</a>
-</li>
+navLinks.forEach(link => {
 
-<li class="nav-item">
-<a class="nav-link" href="#education">Education</a>
-</li>
+    link.addEventListener("click",()=>{
 
-<li class="nav-item">
-<a class="nav-link" href="#contact">Contact</a>
-</li>
+        if(navbarCollapse.classList.contains("show")){
 
-</ul>
+            new bootstrap.Collapse(navbarCollapse)
+            .hide();
 
-</div>
+        }
 
-</div>
+    });
 
-</nav>
+});
 
-<!-- ================= HERO SECTION ================= -->
 
-<section id="home">
 
-<div class="container">
+/* ===================================
+   Navbar Scroll Effect
+=================================== */
 
-<div class="row align-items-center min-vh-100">
 
-<div class="col-lg-6 text-center">
+window.addEventListener("scroll",()=>{
 
-<img src="profile.jpg.jpeg"
-class="profile-img img-fluid"
-alt="Raj Kumar">
 
-</div>
+const navbar =
+document.querySelector(".navbar");
 
-<div class="col-lg-6">
 
-<h4>Hello, I'm</h4>
+if(window.scrollY > 50){
 
-<h1 class="display-3 fw-bold">
-Raj Kumar
-</h1>
+navbar.style.background =
+"rgba(13,110,253,0.98)";
 
-<h3 class="text-primary">
-Computer Science Engineering Student
-</h3>
+navbar.style.boxShadow =
+"0 10px 25px rgba(0,0,0,.25)";
 
-<p class="lead mt-4">
+}
 
-Passionate about Web Development,
-Java Programming,
-Python,
-Artificial Intelligence
-and creating modern websites.
+else{
 
-</p>
 
-<div class="mt-4">
+navbar.style.background =
+"rgba(13,110,253,.95)";
 
-<a href="#contact"
-class="btn btn-primary btn-lg me-3">
-Hire Me
-</a>
 
-<a href="resume.pdf"
-class="btn btn-outline-primary btn-lg">
-Download Resume
-</a>
+navbar.style.boxShadow =
+"0 8px 20px rgba(0,0,0,.15)";
 
-</div>
 
-<div class="social-icons mt-5">
+}
 
-<a href="https://github.com/Rajkumar-2724"
-target="_blank"
-title="GitHub">
 
-<i class="bi bi-github"></i>
 
-<a href="https://www.linkedin.com/in/raj-kumar-0a6ba1322/"
-target="_blank"
-title="LinkedIn">
+});
 
-<i class="bi bi-linkedin"></i>
 
-</a>
 
-<a href="https://instagram.com/your_instagram_username"
-target="_blank"
-title="Instagram">
+/* ===================================
+   Active Menu Highlight
+=================================== */
 
-<i class="bi bi-instagram"></i>
 
-</a>
- <a href="mailto:rkrajubhai726@gmail.com"
-       title="Email">
-        <i class="bi bi-envelope-fill"></i>
-    </a>
+const sections =
+document.querySelectorAll("section");
 
-</div>
 
-</div>
+window.addEventListener("scroll",()=>{
 
-</div>
 
-</div>
+let current="";
 
-</section>
 
-<!-- ================= ABOUT ================= -->
+sections.forEach(section=>{
 
-<section id="about" class="py-5">
 
-<div class="container">
+const sectionTop =
+section.offsetTop - 120;
 
-<div class="text-center mb-5">
 
-<h2>
-About Me
-</h2>
+const sectionHeight =
+section.clientHeight;
 
-<p>
-Get to know me
-</p>
 
-</div>
 
-<div class="row">
+if(
+scrollY >= sectionTop &&
+scrollY < sectionTop + sectionHeight
+){
 
-<div class="col-lg-6">
+current =
+section.getAttribute("id");
 
-<h3>
-Who am I?
-</h3>
+}
 
-<p>
 
-I am Raj Kumar,
-a Computer Science Engineering student.
+});
 
-I enjoy developing responsive websites,
-Java applications,
-Python projects
-and AI-based solutions.
 
-</p>
 
-<p>
+navLinks.forEach(link=>{
 
-I always enjoy learning new technologies
-and building real-world projects
-that solve practical problems.
 
-</p>
+link.classList.remove("active");
 
-</div>
 
-<div class="col-lg-6">
+if(
+link.getAttribute("href")
+==
+"#"+current
+){
 
-<div class="about-box">
+link.classList.add("active");
 
-<div class="row">
+}
 
-<div class="col-6">
 
-<h6>Name</h6>
+});
 
-<p>Raj Kumar</p>
 
-</div>
+});
 
-<div class="col-6">
 
-<h6>Email</h6>
 
-<p>yourmail@gmail.com</p>
 
-</div>
+/* ===================================
+   Typing Animation
+=================================== */
 
-<div class="col-6">
 
-<h6>Phone</h6>
+const textArray=[
 
-<p>+91 XXXXXXXXXX</p>
+"BE Computer Science Engineering Student",
 
-</div>
+"Web Developer",
 
-<div class="col-6">
+"Java Programmer",
 
-<h6>Location</h6>
+"Python Developer",
 
-<p>Tamil Nadu, India</p>
+"Future Full Stack Developer"
 
-</div>
+];
 
-<div class="col-6">
 
-<h6>Degree</h6>
+let textIndex=0;
 
-<p>BE CSE</p>
+let charIndex=0;
 
-</div>
 
-<div class="col-6">
+const typingElement =
+document.querySelector("#home h3");
 
-<h6>Experience</h6>
 
-<p>Fresher</p>
 
-</div>
+function typing(){
 
-</div>
 
-</div>
+if(charIndex < textArray[textIndex].length){
 
-</div>
 
-</div>
+typingElement.innerHTML +=
+textArray[textIndex].charAt(charIndex);
 
-</div>
 
-</section>
+charIndex++;
 
-<!-- ================= SKILLS ================= -->
 
-<section id="skills" class="py-5">
+setTimeout(typing,100);
 
-<div class="container">
 
-<div class="text-center mb-5">
+}
 
-<h2>
-My Skills
-</h2>
 
-<p>
-Technical Skills
-</p>
-  <div class="row">
+else{
 
-<div class="col-lg-6">
 
-<h5>HTML</h5>
+setTimeout(erase,1500);
 
-<div class="progress mb-4">
-<div class="progress-bar bg-primary" style="width:95%">
-95%
-</div>
-</div>
 
-<h5>CSS</h5>
+}
 
-<div class="progress mb-4">
-<div class="progress-bar bg-success" style="width:90%">
-90%
-</div>
-</div>
 
-<h5>JavaScript</h5>
+}
 
-<div class="progress mb-4">
-<div class="progress-bar bg-warning" style="width:80%">
-80%
-</div>
-</div>
 
-</div>
 
-<div class="col-lg-6">
+function erase(){
 
-<h5>Java</h5>
 
-<div class="progress mb-4">
-<div class="progress-bar bg-danger" style="width:88%">
-88%
-</div>
-</div>
+if(charIndex > 0){
 
-<h5>Python</h5>
 
-<div class="progress mb-4">
-<div class="progress-bar bg-info" style="width:85%">
-85%
-</div>
-</div>
+typingElement.innerHTML =
+textArray[textIndex].substring(
+0,charIndex-1
+);
 
-<h5>SQL</h5>
 
-<div class="progress mb-4">
-<div class="progress-bar bg-secondary" style="width:80%">
-80%
-</div>
-</div>
+charIndex--;
 
-</div>
 
-</div>
+setTimeout(erase,50);
 
-</div>
 
-</section>
+}
 
-<!-- ================= PROJECTS ================= -->
+else{
 
-<section id="projects" class="py-5">
 
-<div class="container">
+textIndex++;
 
-<div class="text-center mb-5">
 
-<h2>Projects</h2>
+if(textIndex >= textArray.length){
 
-<p>My Recent Works</p>
+textIndex=0;
 
-</div>
+}
 
-<div class="row">
 
-<div class="col-md-4">
+setTimeout(typing,500);
 
-<div class="card shadow">
 
-<img src="project1.jpg"
-class="card-img-top"
-alt="Project">
+}
 
-<div class="card-body">
 
-<h4>Portfolio Website</h4>
+}
 
-<p>
 
-Responsive personal portfolio using
-HTML, CSS, Bootstrap and JavaScript.
 
-</p>
+window.addEventListener(
+"load",
+()=>{
 
-</div>
+typing();
 
-</div>
+}
 
-</div>
+);
 
-<div class="col-md-4">
 
-<div class="card shadow">
 
-<img src="project2.jpg"
-class="card-img-top"
-alt="Project">
 
-<div class="card-body">
 
-<h4>Harbour Tracking</h4>
+/* ===================================
+   Scroll Reveal Animation
+=================================== */
 
-<p>
 
-Ship tracking dashboard with
-interactive maps.
+const revealElements =
+document.querySelectorAll(
+"section,.card,.about-box,.timeline-item"
+);
 
-</p>
 
-</div>
 
-</div>
+function reveal(){
 
-</div>
 
-<div class="col-md-4">
+revealElements.forEach(element=>{
 
-<div class="card shadow">
 
-<img src="project3.jpg"
-class="card-img-top"
-alt="Project">
+let position =
+element.getBoundingClientRect()
+.top;
 
-<div class="card-body">
 
-<h4>Student Portal</h4>
+let screenHeight =
+window.innerHeight;
 
-<p>
 
-Student Registration System
-using Web Technologies.
 
-</p>
+if(position < screenHeight - 100){
 
-</div>
 
-</div>
+element.style.opacity="1";
 
-</div>
+element.style.transform=
+"translateY(0)";
 
-</div>
 
-</div>
+}
 
-</section>
 
-<!-- ================= EDUCATION ================= -->
+});
 
-<section id="education" class="py-5">
 
-<div class="container">
+}
 
-<div class="text-center mb-5">
 
-<h2>Education</h2>
 
-<p>Academic Details</p>
+revealElements.forEach(element=>{
 
-</div>
 
-<div class="timeline">
+element.style.opacity="0";
 
-<div class="timeline-item">
+element.style.transform=
+"translateY(50px)";
 
-<h4>BE Computer Science Engineering</h4>
+element.style.transition=
+"all .8s ease";
 
-<p>
 
-Anna University Affiliated College
+});
 
-</p>
 
-<p>
+window.addEventListener(
+"scroll",
+reveal
+);
 
-Expected Graduation : 2028
 
-</p>
+window.addEventListener(
+"load",
+reveal
+);
 
-</div>
 
-<div class="timeline-item">
 
-<h4>Higher Secondary</h4>
 
-<p>
 
-Your School Name
+/* ===================================
+   Profile Image Click Effect
+=================================== */
 
-</p>
 
-</div>
+const profile =
+document.querySelector(".profile-img");
 
-</div>
 
-</div>
+if(profile){
 
-</section>
 
-<!-- ================= CONTACT ================= -->
+profile.addEventListener(
+"click",
+()=>{
 
-<section id="contact" class="py-5">
 
-<div class="container">
+profile.style.transform=
+"scale(1.15) rotate(5deg)";
 
-<div class="text-center mb-5">
 
-<h2>Contact Me</h2>
+setTimeout(()=>{
 
-<p>Let's Work Together</p>
 
-</div>
+profile.style.transform=
+"";
 
-<div class="row">
 
-<div class="col-lg-6">
+},500);
 
-<h4>Get In Touch</h4>
 
-<p>
+});
 
-Email :
-yourmail@gmail.com
 
-</p>
+}
 
-<p>
 
-Phone :
-+91 XXXXXXXXXX
 
-</p>
 
-<p>
 
-Location :
-Tamil Nadu, India
+/* ===================================
+   Project Card Tilt Effect
+=================================== */
 
-</p>
 
-</div>
+const cards =
+document.querySelectorAll(".card");
 
-<div class="col-lg-6">
 
-<form>
+cards.forEach(card=>{
 
-<input
-type="text"
-class="form-control mb-3"
-placeholder="Your Name">
 
-<input
-type="email"
-class="form-control mb-3"
-placeholder="Your Email">
+card.addEventListener(
+"mousemove",
+(e)=>{
 
-<textarea
-class="form-control mb-3"
-rows="6"
-placeholder="Your Message"></textarea>
 
-<button
-class="btn btn-primary btn-lg">
-Send Message
-</button>
+const rect =
+card.getBoundingClientRect();
 
-</form>
 
-</div>
+const x =
+e.clientX - rect.left;
 
-</div>
 
-</div>
+const y =
+e.clientY - rect.top;
 
-</section>
 
-<!-- ================= FOOTER ================= -->
 
-<footer class="text-center py-4">
+const rotateX =
+(y-rect.height/2)/15;
 
-<div class="container">
 
-<p>
+const rotateY =
+(rect.width/2-x)/15;
 
-© 2026 Raj Kumar.
 
-All Rights Reserved.
 
-</p>
+card.style.transform =
+`
+perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+scale(1.03)
+`;
 
-</div>
 
-</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+});
 
-<script src="script.js"></script>
 
-</body>
 
-</html>
+card.addEventListener(
+"mouseleave",
+()=>{
 
-</div>
+
+card.style.transform="";
+
+
+});
+
+
+});
+
+
+
+
+
+
+/* ===================================
+   Current Year Footer
+=================================== */
+
+
+const year =
+new Date().getFullYear();
+
+
+const footerText =
+document.querySelector("footer p");
+
+
+if(footerText){
+
+
+footerText.innerHTML =
+`© ${year} Raj Kumar R. All Rights Reserved.`;
+
+
+}
+
+
+
+
+
+
+/* ===================================
+   Form Submit Alert
+=================================== */
+
+
+const form =
+document.querySelector("form");
+
+
+if(form){
+
+
+form.addEventListener(
+"submit",
+function(e){
+
+
+e.preventDefault();
+
+
+alert(
+"Thank you for contacting me! I will reply soon."
+);
+
+
+form.reset();
+
+
+}
+
+);
+
+
+}
