@@ -1,8 +1,12 @@
-/* ==========================
+/* ===================================
    Google Font
-========================== */
+=================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===================================
+   Global
+=================================== */
 
 *{
 margin:0;
@@ -12,113 +16,188 @@ font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
 }
 
-/* ==========================
-Body
-========================== */
-
 body{
-background:#f4f7fc;
+background:#eef3f9;
 color:#222;
+overflow-x:hidden;
 }
 
-/* ==========================
-Navbar
-========================== */
-transition:.3s;
+/* Scrollbar */
 
+::-webkit-scrollbar{
+width:8px;
 }
+
+::-webkit-scrollbar-track{
+background:#dbe4f0;
+}
+
+::-webkit-scrollbar-thumb{
+background:#0d6efd;
+border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:#084298;
+}
+
+/* ===================================
+   Navbar
+=================================== */
 
 .navbar{
-
-background:#0d1b2a;
-
-box-shadow:0 4px 15px rgba(0,0,0,.2);
-
+background:rgba(13,110,253,.95);
+backdrop-filter:blur(15px);
+padding:15px 0;
+transition:.4s;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
-
-
 
 .navbar-brand{
-
-font-size:28px;
-
+font-size:30px;
 font-weight:700;
-
+letter-spacing:1px;
+color:#fff!important;
 }
 
-
-
 .nav-link{
+color:#fff!important;
+font-weight:500;
+margin-left:18px;
+position:relative;
+transition:.3s;
+}
 
-color:#fff !important;
+.nav-link::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:3px;
+background:#fff;
+transition:.3s;
+border-radius:5px;
+}
 
-margin-left:15px;
+.nav-link:hover::after,
+.nav-link.active::after{
+width:100%;
+}
 
 .nav-link:hover{
-
-color:#00c6ff !important;
-
+color:#dbe9ff!important;
 }
 
 .navbar-toggler{
-    border:2px solid white;
+border:2px solid #fff;
 }
 
 .navbar-toggler:focus{
-    box-shadow:none;
+box-shadow:none;
 }
 
-/* ==========================
-Hero
-========================== */
+/* ===================================
+   Hero Section
+=================================== */
 
 #home{
-padding-top:100px;
-min-height:100vh;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background:linear-gradient(135deg,#0d6efd,#0b5ed7,#0a58ca);
 color:white;
-}
-
-.profile-img{
-width:300px;
-height:300px;
-border-radius:50%;
-object-fit:cover;
-object-position:center top;
-border:8px solid white;
-box-shadow:0 15px 40px rgba(0,0,0,.4);
-transition:.4s;
-}
-
-.profile-img:hover{
-transform:scale(1.05);
+padding-top:120px;
+padding-bottom:80px;
+min-height:100vh;
+display:flex;
+align-items:center;
 }
 
 .display-3{
-font-weight:700;
+font-weight:800;
 }
 
 .lead{
-font-size:18px;
+font-size:20px;
+line-height:1.8;
 }
 
-/* ==========================
-Buttons
-========================== */
+/* ===================================
+   Profile Image
+=================================== */
+
+.profile-img{
+
+width:300px;
+height:300px;
+
+border-radius:50%;
+
+object-fit:cover;
+object-position:center top;
+
+border:8px solid #4da3ff;
+
+padding:6px;
+
+background:white;
+
+box-shadow:
+0 0 20px rgba(77,163,255,.6),
+0 15px 40px rgba(0,0,0,.25);
+
+transition:.5s;
+
+}
+
+.profile-img:hover{
+
+transform:scale(1.05) rotate(2deg);
+
+box-shadow:
+0 0 35px rgba(77,163,255,.8),
+0 20px 45px rgba(0,0,0,.3);
+
+}
+
+/* ===================================
+   Buttons
+=================================== */
+
+.btn{
+
+border-radius:40px;
+padding:12px 30px;
+font-weight:600;
+transition:.35s;
+
+}
 
 .btn-primary{
-padding:12px 28px;
-border-radius:30px;
+
+background:#fff;
+color:#0d6efd;
+border:none;
+
 }
 
-.btn-outline-primary{
-padding:12px 28px;
-border-radius:30px;
+.btn-primary:hover{
+
+background:#0b5ed7;
+color:#fff;
+transform:translateY(-4px);
+
 }
 
-/* ==========================
-Social Icons
-========================== */
+.btn-outline-light:hover{
+
+background:#fff;
+color:#0d6efd;
+transform:translateY(-4px);
+
+}
+
+/* ===================================
+   Social Icons
+=================================== */
 
 .social-icons a{
 
@@ -126,19 +205,21 @@ display:inline-flex;
 justify-content:center;
 align-items:center;
 
-width:50px;
-height:50px;
+width:55px;
+height:55px;
 
 background:white;
 color:#0d6efd;
 
 border-radius:50%;
 
-margin-right:12px;
+font-size:24px;
 
-font-size:22px;
+margin-right:15px;
 
 text-decoration:none;
+
+box-shadow:0 8px 20px rgba(0,0,0,.18);
 
 transition:.4s;
 
@@ -148,13 +229,16 @@ transition:.4s;
 
 background:#0d6efd;
 color:white;
-transform:translateY(-6px);
+
+transform:translateY(-8px) scale(1.1);
+
+box-shadow:0 15px 30px rgba(13,110,253,.45);
 
 }
 
-/* ==========================
-Sections
-========================== */
+/* ===================================
+   Section Heading
+=================================== */
 
 section{
 
@@ -164,8 +248,9 @@ padding:90px 0;
 
 section h2{
 
-font-size:40px;
+font-size:42px;
 font-weight:700;
+color:#0d6efd;
 margin-bottom:15px;
 
 }
@@ -173,46 +258,80 @@ margin-bottom:15px;
 section p{
 
 font-size:17px;
+line-height:1.8;
 
 }
+/* ===================================
+   ABOUT SECTION
+=================================== */
 
-/* ==========================
-About
-========================== */
+#about{
+background:#ffffff;
+}
 
 .about-box{
 
-background:white;
+background:#fff;
 
-padding:30px;
+padding:35px;
 
-border-radius:15px;
+border-radius:20px;
 
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+transition:.4s;
+
+border-left:6px solid #0d6efd;
+
+}
+
+.about-box:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 40px rgba(13,110,253,.18);
 
 }
 
 .about-box h6{
 
+color:#0d6efd;
+
 font-weight:700;
 
-color:#0d6efd;
+margin-bottom:5px;
 
 }
 
-/* ==========================
-Skills
-========================== */
+.about-box p{
+
+margin-bottom:18px;
+
+}
+
+/* ===================================
+   SKILLS
+=================================== */
+
+#skills{
+
+background:#f8fbff;
+
+}
 
 .progress{
 
 height:28px;
 
-border-radius:20px;
+border-radius:30px;
 
 overflow:hidden;
 
+background:#dfe8f5;
+
 margin-bottom:25px;
+
+box-shadow:inset 0 3px 8px rgba(0,0,0,.12);
 
 }
 
@@ -222,11 +341,37 @@ font-weight:600;
 
 font-size:15px;
 
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:30px;
+
+animation:progressAnimation 2s ease;
+
 }
 
-/* ==========================
-Cards
-========================== */
+@keyframes progressAnimation{
+
+from{
+
+width:0;
+
+}
+
+}
+
+/* ===================================
+   PROJECT SECTION
+=================================== */
+
+#projects{
+
+background:#ffffff;
+
+}
 
 .card{
 
@@ -236,118 +381,463 @@ border-radius:20px;
 
 overflow:hidden;
 
-transition:.4s;
+transition:.45s;
+
+box-shadow:0 12px 25px rgba(0,0,0,.10);
+
+height:100%;
 
 }
 
 .card:hover{
 
-transform:translateY(-10px);
+transform:translateY(-12px);
 
-box-shadow:0 20px 35px rgba(0,0,0,.15);
+box-shadow:0 25px 45px rgba(13,110,253,.22);
 
 }
 
-.card img{
+.card-img-top{
 
-height:220px;
+height:230px;
+
+width:100%;
 
 object-fit:cover;
 
+transition:.5s;
+
 }
 
-/* ==========================
-Timeline
-========================== */
+.card:hover .card-img-top{
+
+transform:scale(1.08);
+
+}
+
+.card-body{
+
+padding:25px;
+
+}
+
+.card-title,
+.card h4{
+
+font-weight:700;
+
+color:#0d6efd;
+
+margin-bottom:15px;
+
+}
+
+.card-text,
+.card p{
+
+font-size:15px;
+
+line-height:1.7;
+
+}
+
+/* ===================================
+   TIMELINE
+=================================== */
 
 .timeline{
 
-border-left:5px solid #0d6efd;
+position:relative;
+
+margin-left:20px;
 
 padding-left:30px;
+
+border-left:4px solid #0d6efd;
 
 }
 
 .timeline-item{
 
-background:white;
+position:relative;
 
-padding:20px;
+background:#fff;
 
-margin-bottom:25px;
+padding:25px;
 
-border-radius:15px;
+margin-bottom:30px;
 
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+border-radius:18px;
+
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+transition:.4s;
 
 }
 
-/* ==========================
-Contact
-========================== */
+.timeline-item::before{
+
+content:"";
+
+position:absolute;
+
+left:-42px;
+
+top:28px;
+
+width:18px;
+
+height:18px;
+
+background:#0d6efd;
+
+border-radius:50%;
+
+border:4px solid #fff;
+
+box-shadow:0 0 0 4px #0d6efd;
+
+}
+
+.timeline-item:hover{
+
+transform:translateX(10px);
+
+box-shadow:0 20px 40px rgba(13,110,253,.18);
+
+}
+
+.timeline-item h4{
+
+color:#0d6efd;
+
+font-weight:700;
+
+margin-bottom:10px;
+
+}
+/* ===================================
+   CONTACT SECTION
+=================================== */
+
+#contact{
+
+background:#f8fbff;
+
+}
+
+
+#contact h4{
+
+font-weight:700;
+
+color:#0d6efd;
+
+margin-bottom:25px;
+
+}
+
+
+#contact p{
+
+font-size:17px;
+
+margin-bottom:25px;
+
+}
+
+
+#contact i{
+
+font-size:22px;
+
+margin-right:10px;
+
+}
+
+
+
+/* Contact Form */
 
 form{
 
 background:white;
 
-padding:30px;
+padding:35px;
 
-border-radius:15px;
+border-radius:20px;
 
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+box-shadow:
+0 15px 35px rgba(0,0,0,.10);
 
 }
+
 
 .form-control{
 
-padding:14px;
+height:55px;
 
-border-radius:12px;
+border-radius:15px;
+
+border:2px solid #e0e8f5;
+
+padding:15px;
+
+font-size:16px;
+
+transition:.3s;
 
 }
 
-/* ==========================
-Footer
-========================== */
 
-footer{
+.form-control:focus{
 
-background:#0d1b2a;
+border-color:#0d6efd;
+
+box-shadow:
+0 0 15px rgba(13,110,253,.25);
+
+}
+
+
+textarea.form-control{
+
+height:auto;
+
+resize:none;
+
+}
+
+
+/* Send Button */
+
+form .btn-primary{
+
+background:#0d6efd;
+
+color:white;
+
+padding:13px 35px;
+
+}
+
+
+form .btn-primary:hover{
+
+background:#084298;
 
 color:white;
 
 }
 
-/* ==========================
-Responsive
-========================== */
 
-@media(max-width:992px){
 
-.profile-img{
+/* ===================================
+   FOOTER
+=================================== */
 
-width:220px;
-height:220px;
 
-margin-bottom:40px;
+footer{
+
+background:#071a35!important;
 
 }
 
-.display-3{
+
+footer a{
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+
+footer a:hover{
+
+color:#00d9ff!important;
+
+transform:translateY(-5px);
+
+display:inline-block;
+
+}
+
+
+footer p{
+
+font-size:15px;
+
+color:#dbe9ff;
+
+}
+
+
+
+/* ===================================
+   PAGE ANIMATION
+=================================== */
+
+
+section{
+
+animation:fadeIn 1s ease;
+
+}
+
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+/* ===================================
+   HOVER EFFECT FOR TEXT
+=================================== */
+
+
+h1,h2,h3,h4{
+
+transition:.3s;
+
+}
+
+
+h1:hover,
+h2:hover{
+
+letter-spacing:1px;
+
+}
+
+
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+
+
+@media(max-width:992px){
+
+
+#home{
+
+text-align:center;
+
+}
+
+
+#home h1{
 
 font-size:45px;
 
 }
 
+
+.profile-img{
+
+width:240px;
+
+height:240px;
+
 }
 
-@media(max-width:768px){
 
-.display-3{
+.social-icons{
+
+margin-bottom:30px;
+
+}
+
+
+.nav-link{
+
+margin-left:0;
+
+margin-top:10px;
+
+}
+
+
+}
+
+
+
+
+@media(max-width:576px){
+
+
+section{
+
+padding:60px 0;
+
+}
+
+
+#home{
+
+padding-top:100px;
+
+}
+
+
+#home h1{
 
 font-size:36px;
 
 }
+
+
+#home h3{
+
+font-size:20px;
+
+}
+
+
+.lead{
+
+font-size:16px;
+
+}
+
+
+.profile-img{
+
+width:200px;
+
+height:200px;
+
+}
+
+
+.social-icons a{
+
+width:45px;
+
+height:45px;
+
+font-size:20px;
+
+}
+
 
 section h2{
 
@@ -355,10 +845,111 @@ font-size:32px;
 
 }
 
-.social-icons{
 
-text-align:center;
+.about-box{
+
+padding:25px;
 
 }
+
+
+.card-img-top{
+
+height:200px;
+
+}
+
+
+.timeline{
+
+margin-left:5px;
+
+padding-left:20px;
+
+}
+
+
+.timeline-item{
+
+padding:20px;
+
+}
+
+
+}
+
+
+/* ===================================
+   EXTRA GLOW EFFECT
+=================================== */
+
+
+#home::before{
+
+content:"";
+
+position:absolute;
+
+width:300px;
+
+height:300px;
+
+background:#4da3ff;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+top:100px;
+
+left:50px;
+
+opacity:.5;
+
+}
+
+
+
+#home{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+/* Floating Animation */
+
+.profile-img{
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+
+@keyframes float{
+
+
+0%{
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
+
 
 }
