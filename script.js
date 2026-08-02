@@ -504,35 +504,47 @@ footerText.innerHTML =
 
 
 /* ===================================
-   Form Submit Alert
+   Contact Form Submit
 =================================== */
+
 const form = document.querySelector("#contact-form");
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    const name = document.querySelector("#name").value;
-    const email = document.querySelector("#email").value;
-    const subject = document.querySelector("#subject").value;
-    const message = document.querySelector("#message").value;
+        const name = document.querySelector("#name").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const subject = document.querySelector("#subject").value.trim();
+        const message = document.querySelector("#message").value.trim();
 
-    const response = await fetch("http://localhost:5000/contact", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name,
-            email,
-            subject,
-            message,
-        }),
+        try {
+            const response = await fetch("https://portfolio-backend-tzr1.onrender.com/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    subject,
+                    message
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("✅ " + data.message);
+                form.reset();
+            } else {
+                alert("❌ " + data.message);
+            }
+
+        } catch (error) {
+            console.error(error);
+            alert("❌ Unable to connect to the server.");
+        }
     });
-
-    const data = await response.json();
-
-    alert(data.message);
-
-    form.reset();
-});
+}
 
