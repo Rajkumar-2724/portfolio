@@ -506,34 +506,33 @@ footerText.innerHTML =
 /* ===================================
    Form Submit Alert
 =================================== */
+const form = document.querySelector("#contact-form");
 
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-const form =
-document.querySelector("form");
+    const name = document.querySelector("#name").value;
+    const email = document.querySelector("#email").value;
+    const subject = document.querySelector("#subject").value;
+    const message = document.querySelector("#message").value;
 
+    const response = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message,
+        }),
+    });
 
-if(form){
+    const data = await response.json();
 
+    alert(data.message);
 
-form.addEventListener(
-"submit",
-function(e){
+    form.reset();
+});
 
-
-e.preventDefault();
-
-
-alert(
-"Thank you for contacting me! I will reply soon."
-);
-
-
-form.reset();
-
-
-}
-
-);
-
-
-}
