@@ -519,7 +519,7 @@ if (form) {
         const message = document.querySelector("#message").value.trim();
 
         try {
-            const response = await fetch("https://portfolio-backend-tzr1.onrender.com/contact", {
+            const response = await fetch("https://portfolio-backend-kbow.onrender.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
